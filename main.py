@@ -94,7 +94,7 @@ def main(request):
     Args:
         request: The HTTP request object.
     """
-    source_folder_ids = os.environ.get('SOURCE_FOLDER_IDS').split('|')
+    source_folder_ids = os.environ.get('SOURCE_FOLDER_IDS').split(' ')
     dest_folder_id = os.environ.get('DEST_FOLDER_ID')
     backup_name = os.environ.get('BACKUP_NAME')
     versions_to_keep = int(os.environ.get('VERSIONS_TO_KEEP', 5))

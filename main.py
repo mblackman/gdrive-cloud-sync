@@ -87,14 +87,6 @@ def delete_old_backups(drive_service, dest_folder_id, versions_to_keep, backup_n
         for file in files_to_delete:
             drive_service.files().delete(fileId=file['id']).execute()
 
-def load_env_vars():
-    """
-    Loads environment variables from .env file for local development.
-    """
-    if os.environ.get('ENVIRONMENT') == 'LOCAL':
-        from dotenv import load_dotenv
-        load_dotenv()
-
 def main(request):
     """
     Cloud Function entry point.
@@ -102,8 +94,6 @@ def main(request):
     Args:
         request: The HTTP request object.
     """
-    load_env_vars()
-
     source_folder_ids = os.environ.get('SOURCE_FOLDER_IDS').split(',')
     dest_folder_id = os.environ.get('DEST_FOLDER_ID')
     backup_name = os.environ.get('BACKUP_NAME')
